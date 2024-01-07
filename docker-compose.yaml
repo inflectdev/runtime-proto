@@ -1,0 +1,7 @@
+services:
+  generate:
+    build:
+      context: .
+    command: go generate -v ./...
+    volumes:
+      - ./:/generate

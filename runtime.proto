@@ -1,0 +1,24 @@
+syntax = "proto3";
+option go_package = ".;proto";
+package inflect.runtime.v1;
+
+service Runtime {
+    rpc Run(RunRequest) returns (RunResponse) {}
+}
+
+message RunRequest {
+    string image = 1;
+    string command = 2;
+    repeated string args = 3;
+
+    message EnvVar {
+        string name = 1;
+        string value = 2;
+    }
+
+    repeated EnvVar env = 4;
+}
+
+message RunResponse {
+    string id = 1;
+}
